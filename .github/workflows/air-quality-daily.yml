@@ -24,7 +24,7 @@ jobs:
           cache: 'pip'
       - name: install python packages
         run: |
-          cd notebooks/ch03
+          cd notebooks/airquality
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
