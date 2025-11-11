@@ -15,4 +15,5 @@ nbformat
 Faker
 invoke
 python-dotenv
+pillow
 #feldera==0.41
