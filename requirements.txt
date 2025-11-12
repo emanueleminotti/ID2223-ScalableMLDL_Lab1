@@ -16,4 +16,6 @@ Faker
 invoke
 python-dotenv
 pillow
+folium
+streamlit-folium
 #feldera==0.41
