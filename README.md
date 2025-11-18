@@ -1,49 +1,112 @@
-# mlfs-book
-O'Reilly book - Building Machine Learning Systems with a feature store: batch, real-time, and LLMs
+# Air Quality Prediction Service
+**ID2223 – Lab 1 (HT2025)**  
+*Predictive Air Quality Modeling with Feature Stores and Serverless Pipelines*
 
+---
 
-## ML System Examples
+## Overview
 
+This project implements a **serverless machine learning system** that predicts **PM2.5 air quality levels** for two air quality sensors in **Malmö, Sweden**:
 
-[Dashboards for Example ML Systems](https://featurestorebook.github.io/mlfs-book/)
+- **Rådhuset**
+- **Dalaplan**
 
+The goal of the lab is to build a complete end-to-end pipeline that ingests weather and air-quality data, creates features, trains a predictive model, runs batch inference, and exposes predictions through a simple dashboard.  
 
+This project is part of the course **ID2223: Scalable Machine Learning Systems**, following the workflow from the book *Building ML Systems with a Feature Store*.
 
+---
 
-# Run Air Quality Tutorial
+## Features
 
-See [tutorial instructions here](https://docs.google.com/document/d/1YXfM1_rpo1-jM-lYyb1HpbV9EJPN6i1u6h2rhdPduNE/edit?usp=sharing)
-    # Create a conda or virtual environment for your project
-    conda create -n book 
-    conda activate book
+### ✅ Air Quality Forecasting  
+We forecast PM2.5 values for the next **7–10 days** using a model trained on:
 
-    # Install 'uv' and 'invoke'
-    pip install invoke dotenv
+- Historical PM2.5 measurements  
+- Historical and forecasted weather data  
+- Sensor-specific contextual features  
 
-    # 'invoke install' installs python dependencies using uv and requirements.txt
-    invoke install
+### ✅ Two Malmö Sensors Implemented  
+We implemented the full pipeline for two AQI sensors:
 
+- **Malmö – Rådhuset**
+- **Malmö – Dalaplan**
 
-## PyInvoke
+These sensors were selected because they provide **high-quality historical data** on https://aqicn.org.
 
-    invoke aq-backfill
-    invoke aq-features
-    invoke aq-train
-    invoke aq-inference
-    invoke aq-clean
+### ✅ Reproducible Serverless ML Pipelines  
+Using **Hopsworks**, **GitHub Actions**, and **Jupyter notebooks**, we implemented:
 
+1. **Backfill feature pipeline**  
+   Loads >1 year of historical weather and air-quality data and writes them to feature groups.
 
+2. **Daily feature pipeline**  
+   Updates the Feature Store with yesterday’s observations and next-week forecasts.
 
-## Feldera
+3. **Training pipeline**  
+   Creates a Feature View, trains an XGBoost regression model, and registers it in Hopsworks.
 
+4. **Batch inference pipeline**  
+   Downloads the latest model, generates predictions, and creates the dashboard PNG.
 
-pip install feldera ipython-secrets
-sudo apt-get install python3-secretstorage
-sudo apt-get install gnome-keyring 
+### ✅ Dashboard Visualization  
+We provide a dashboard that visualizes:
 
-mkdir -p /tmp/c.app.hopsworks.ai
-ln -s  /tmp/c.app.hopsworks.ai ~/hopsworks
-docker run -p 8080:8080 \
-  -v ~/hopsworks:/tmp/c.app.hopsworks.ai \
-  --tty --rm -it ghcr.io/feldera/pipeline-manager:latest
+- 7-day PM2.5 forecast  
+- Historical data (hindcast)  
+- Comparison of predicted vs real measurements  
+
+The dashboard is publicly accessible as required.
+
+---
+
+## How to Run the Project
+
+### 1. Create Accounts
+- **Hopsworks.ai** (Feature Store)
+- **GitHub** (GitHub Actions for serverless scheduling)
+
+### 2. Add Secrets
+Store `HOPSWORKS_API_KEY` in:
+
+- GitHub → Settings → Secrets → Actions
+
+### 3. Run the Pipelines
+You can run all pipelines locally from Jupyter, or schedule them using GitHub Actions.
+
+### 4. View Dashboard
+The batch inference pipeline generates a forecast PNG for both Rådhuset and Dalaplan.
+
+---
+
+## Deliverables
+
+✔ Source code in GitHub repository  
+✔ README.md (this document)  
+✔ Public dashboard URL  
+✔ Implementation of forecasting for **Rådhuset** and **Dalaplan** sensors  
+✔ All pipelines completed as per lab requirements  
+
+---
+
+## References
+
+- *Building ML Systems with a Feature Store*  
+  https://github.com/featurestorebook/mlfs-book  
+
+- AQI Sensor Data  
+  https://aqicn.org  
+
+- Weather Forecast Data  
+  https://open-meteo.com  
+
+---
+
+## Authors
+
+Emanuele Minotti - minotti@kth.se
+Stefano Romano - sromano@kth.se
+
+Group project for ID2223 – HT2025  
+KTH Royal Institute of Technology  
 
