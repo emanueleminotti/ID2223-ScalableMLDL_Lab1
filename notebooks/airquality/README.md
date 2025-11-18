@@ -1,4 +1,4 @@
-# Air Quality Prediction Service with LLM Personalization  
+# Air Quality Prediction Service
 **ID2223 – Lab 1 (HT2025)**  
 *Predictive Air Quality Modeling with Feature Stores and Serverless Pipelines*
 
@@ -12,7 +12,6 @@ This project implements a **serverless machine learning system** that predicts *
 - **Dalaplan**
 
 The goal of the lab is to build a complete end-to-end pipeline that ingests weather and air-quality data, creates features, trains a predictive model, runs batch inference, and exposes predictions through a simple dashboard.  
-We also extend the system with **LLM capabilities**, enabling users to ask natural-language questions about historical and forecasted air quality for their location.
 
 This project is part of the course **ID2223: Scalable Machine Learning Systems**, following the workflow from the book *Building ML Systems with a Feature Store*.
 
@@ -34,21 +33,6 @@ We implemented the full pipeline for two AQI sensors:
 - **Malmö – Dalaplan**
 
 These sensors were selected because they provide **high-quality historical data** on https://aqicn.org.
-
-### ✅ LLM-Powered Personalization  
-The system augments the prediction interface with LLM reasoning.  
-For each query, the system injects:
-
-- User location  
-- Current date  
-- Predicted PM2.5 values  
-- Historical measurements from the Feature Store  
-- (Future) Health sensitivity profile  
-
-Users can ask natural-language questions such as:
-
-> “How will the air quality change this week at Rådhuset?”  
-> “Was the PM2.5 higher last weekend than today at Dalaplan?”
 
 ### ✅ Reproducible Serverless ML Pipelines  
 Using **Hopsworks**, **GitHub Actions**, and **Jupyter notebooks**, we implemented:
@@ -73,9 +57,6 @@ We provide a dashboard that visualizes:
 - Comparison of predicted vs real measurements  
 
 The dashboard is publicly accessible as required.
-
----
-
 
 ---
 
@@ -122,6 +103,9 @@ The batch inference pipeline generates a forecast PNG for both Rådhuset and Dal
 ---
 
 ## Authors
+
+Emanuele Minotti - minotti@kth.se
+Stefano Romano - sromano@kth.se
 
 Group project for ID2223 – HT2025  
 KTH Royal Institute of Technology  
