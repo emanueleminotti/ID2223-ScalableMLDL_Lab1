@@ -24,7 +24,8 @@ We forecast PM2.5 values for the next **7–10 days** using a model trained on:
 
 - Historical PM2.5 measurements  
 - Historical and forecasted weather data  
-- Sensor-specific contextual features  
+- New recursive lagged PM2.5 features 
+- New humidity feature  
 
 ### ✅ Two Malmö Sensors Implemented  
 We implemented the full pipeline for two AQI sensors:
