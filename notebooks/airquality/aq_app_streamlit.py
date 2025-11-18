@@ -1,4 +1,13 @@
 # app_streamlit.py
+import subprocess
+import sys
+
+def ensure_packages():
+    pkgs = ["folium", "streamlit-folium"]
+    subprocess.check_call([sys.executable, "-m", "pip", "install"] + pkgs)
+
+ensure_packages()
+
 import base64
 from io import BytesIO
 from pathlib import Path
