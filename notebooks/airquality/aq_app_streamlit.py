@@ -113,7 +113,6 @@ with row1_col2:
     )
 
 # Seconda riga
-row2_col1, row2_col2 = st.columns(2, gap="large")
 
 
 
